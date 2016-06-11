@@ -2,7 +2,7 @@ require './matches.rb'
 require 'pry-byebug'
 
 suits = ["#", "@", "!", "^"]
-numbers = ["A", "2", "3", "4", "5","6", "7", "8", "9", "10", "J", "Q", "k"]
+numbers = ["A", "2", "3", "4"]
 @pack = numbers.product(suits)
 @pack.shuffle!
 @pot = 0
