@@ -41,15 +41,31 @@ def flop_matches_index_1
   end
 end
 
+def state_pair
+  puts case
+  when
+    hand_pair == true
+    puts "pair"
+  when
+    flop_pair == true
+    puts "pair"
+  when
+    flop_matches_index_0 == true
+    puts "pair"
+  when
+    flop_matches_index_1 == true
+    puts "pair"
+  end
+end
 
 def threes
   puts case
     when
-      (hand_pair && flop_matches_index_0) == true
-      "three"
+      hand_pair && flop_matches_index_0 == true
+      puts "three"
     when
-      (hand_pair && flop_matches_index_1) == true
-      "three"      
+      hand_pair && flop_matches_index_1 == true
+      puts "three"      
   end
 end 
 
@@ -58,12 +74,23 @@ def two_pair
   puts case
     when
       hand_pair && flop_pair == true
-      print "two pairs"
+      puts "two pairs"
   end
 end
-
-
-
+ 
+def rules
+  puts case
+  when
+    threes == true
+    "three"
+  when
+    two_pair == true
+    "two pairs"
+  when
+    state_pair == true
+    "pair"
+  end
+end
 
 
 

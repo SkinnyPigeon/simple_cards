@@ -33,7 +33,7 @@ print @hand.join(" ")
 puts
 print @flop.join(" ")
 puts
-two_pair
+rules
 
 
 
