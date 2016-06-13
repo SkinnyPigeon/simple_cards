@@ -98,22 +98,22 @@ def state_pair
   case
     when
       hand_pair == true
-      puts "pair"
+      return true
     when
       flop_pair_0 == true
-      puts "pair"
+      return true
     when
       flop_pair_1 == true
-      puts "pair"
+      return true
     when
       flop_pair_2 == true
-      puts "pair"
+      return true
     when
       flop_matches_index_0 == true
-      puts "pair"
+      return true
     when
       flop_matches_index_1 == true
-      puts "pair"
+      return true
   end
 end
 
@@ -121,19 +121,19 @@ def threes
   case
     when
       hand_pair && flop_matches_index_0 == true
-      puts "Three of a kind"
+      return true
     when
-      hand_pair && flop_matches_index_1 == true
-      puts "Three of a kind" 
+      hand_pair && flop_matches_index_1 == true 
+      return true
     when
       flop_pair_0 && hand_matches_index_0 == true
-      puts "Three of a kind"
+      return true
     when
       flop_pair_1 && hand_matches_index_1 == true
-      puts "Three of a kind"
+      return true
     when
       flop_pair_2 && hand_matches_index_1 == true
-      puts "Three of a kind"
+      return true
   end
 end 
 
@@ -141,17 +141,17 @@ end
 def two_pair
   case
     when
-      hand_pair && flop_pair_0 == true
-      puts "two pairs"    
+      ( hand_pair == true ) && ( flop_pair_0 == true )
+      return true   
     when
-      hand_pair && flop_pair_1 == true
-      puts "two pairs"    
+      hand_pair == true && flop_pair_1 == true   
+      return true 
     when
-      hand_pair && flop_pair_2 == true
-      puts "two pairs"
+      hand_pair = true && flop_pair_2 == true
+      return true
     when
-      flop_matches_index_1 && flop_matches_index_0 == true
-      puts "two pairs"
+      flop_matches_index_1 == true && flop_matches_index_0 == true
+      return true
   end
 end
 
@@ -165,14 +165,17 @@ end
 def rules
   puts case
   when
-    (flop_three) || (threes)  == true
+    (flop_three == true) || (threes  == true)
     puts "Three of a kind of a kind! "
+    return
   when
-    (flop_pair_0) || (flop_pair_1) || (flop_pair_2) == true
-    puts "Two pairs"
+    (flop_pair_0 == true) || (flop_pair_1 == true) || (flop_pair_2 == true)
+    puts "Two pairs "
+    return
   when
     state_pair == true
     puts "Pair"
+    return
   end
 end
 
