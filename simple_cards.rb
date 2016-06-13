@@ -1,7 +1,7 @@
 require './matches.rb'
 require 'pry-byebug'
 
-suits = ["#", "@", "!", "^"]
+suits = ["♠️", "♥️", "♣️", "♦️"]
 numbers = ["A", "2", "3", "4"]
 @pack = numbers.product(suits)
 @pack.shuffle!
