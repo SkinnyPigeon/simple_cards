@@ -1,11 +1,7 @@
 require 'pry-byebug'
 
 def hand_pair
-  case
-    when
-      @hand[0][0].include?(@hand[1][0])
-      return true
-  end
+  return @hand[0][0].include?(@hand[1][0])
 end
 
 
@@ -95,67 +91,70 @@ def flop_matches_index_1
 end
 
 def state_pair
-  case
-    when
-      hand_pair == true
-      return true
-    when
-      flop_pair_0 == true
-      return true
-    when
-      flop_pair_1 == true
-      return true
-    when
-      flop_pair_2 == true
-      return true
-    when
-      flop_matches_index_0 == true
-      return true
-    when
-      flop_matches_index_1 == true
-      return true
+  rules_set = [hand_pair,
+              flop_pair_0,
+              flop_pair_1,
+              flop_pair_2,
+              flop_matches_index_0,
+              flop_matches_index_1]
+ 
+  for item in rules_set
+    return true if(item)
   end
+  
 end
+#   case
+#     when
+#       hand_pair == true
+#       return true
+#     when
+#       flop_pair_0 == true
+#       return true
+#     when
+#       flop_pair_1 == true
+#       return true
+#     when
+#       flop_pair_2 == true
+#       return true
+#     when
+#       flop_matches_index_0 == true
+#       return true
+#     when
+#       flop_matches_index_1 == true
+#       return true
+#   end
+# end
 
 def threes
-  case
-    when
-      hand_pair && flop_matches_index_0 == true
-      return true
-    when
-      hand_pair && flop_matches_index_1 == true 
-      return true
-    when
-      flop_pair_0 && hand_matches_index_0 == true
-      return true
-    when
-      flop_pair_1 && hand_matches_index_1 == true
-      return true
-    when
-      flop_pair_2 && hand_matches_index_1 == true
-      return true
+  rules_set = [ hand_pair && flop_matches_index_0,
+              hand_pair && flop_matches_index_1,
+              flop_pair_0 && hand_matches_index_0,
+              flop_pair_1 && hand_matches_index_1,
+              flop_pair_2 && hand_matches_index_1]
+
+  for item in rules_set
+    return true if(item)
   end
+
 end 
 
 
 def two_pair
-  case
-    when
-      ( hand_pair == true ) && ( flop_pair_0 == true )
-      return true   
-    when
-      hand_pair == true && flop_pair_1 == true   
-      return true 
-    when
-      hand_pair = true && flop_pair_2 == true
-      return true
-    when
-      flop_matches_index_1 == true && flop_matches_index_0 == true
-      return true
+  rules_set = [hand_pair && flop_pair_0,
+              hand_pair && flop_pair_1,
+              hand_pair && flop_pair_2,
+              flop_matches_index_1 && flop_matches_index_0]
+
+  for item in rules_set
+    return true if(item)
   end
+
 end
 
+def four_of_a_kind
+  rules_set = [hand_pair ]
 
+end
 
 
 
